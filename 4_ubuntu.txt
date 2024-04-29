@@ -1,0 +1,176 @@
+z// Install apps:
+sudo apt install zip diodon oathtool redshift pdfarranger vlc build-essential cmake unzip pkg-config ca-certificates greybird-gtk-theme keepassxc elementary-xfce-icon-theme iptables-persistent feh vim catfish rofi gimp inkscape okular autotools-dev automake make git git-lfs gitk git-gui audacious shutter simplescreenrecorder nemo dolphin kde-cli-tools gnome-terminal ark texstudio xournalpp xournal kde-plasma-desktop xclip yt-dlp curl kate calibre htop adb colordiff xserver-xorg-input-synaptics xbacklight
+
+# Open source:
+gnote (notes)
+
+# Then manually install awesomewm + e2guardian + dnsmasq
+sudo apt install dnsmasq # awesome
+
+// 1. Remove extra workspaces:
+Ubuntu settings > Multitasking > workspaces
+// 2. Enable night light:
+Settings > Screen display > Night Light tab
+// 3. Install dash to panel:
+sudo apt install gnome-shell-extension-manager chrome-gnome-shell
+https://extensions.gnome.org/extension/1160/dash-to-panel/
+// 4. install microsoft fonts:
+sudo apt-get install ubuntu-restricted-extras ttf-mscorefonts-installer
+// 5. Remove snapd: [/snap; /var/snap]
+sudo apt remove --purge snapd
+
+// right click/right-click shortcut:
+Shift + F10
+
+# Update yt-dlp:
+python3 -m pip install -U yt-dlp # youtube-dl replacement
+
+// AppImages:
+chromium: (.AppImage put in ~/.local/bin/)
+https://ungoogled-software.github.io/ungoogled-chromium-binaries/releases/appimage/64bit/
+
+firefox ESR (put in ~/.local/bin/)
+https://www.mozilla.org/en-GB/firefox/all/#product-desktop-esr
+
+// run sudo at startup: Change brightness of screen: 
+sudo vim /etc/rc.local
+sudo chmod +x /etc/rc.local
+# put the following inside:
+#!/bin/sh -e
+echo 5 | sudo tee /sys/class/backlight/intel_backlight/brightness
+exit 0
+https://askubuntu.com/questions/956237/run-terminal-sudo-command-at-startup
+# or: don't do the above; you can change brightness using:
+xrandr --output eDP-1 --brightness 0.8
+https://askubuntu.com/questions/1230937/ubuntu-20-04-brightness-adjust-not-working
+
+// .profile:
+xrandr --output HDMI-1-0 --output eDP-1 --same-as HDMI-1-0 --mode 1920x1080 # screen mirroring
+# xrandr --auto
+diodon & # enable copy & paste in awesomewm
+nm-applet &
+redshift -m randr -O 4500
+
+// Default termial background colour on ubuntu is:
+# 300A24
+
+// show ubuntu version:
+lsb_release -a
+
+// see visudo in: [configs/firewall/e2guardian/Readme.md]
+
+// sudo apt-get update
+# NOTE: IMPORTANT: change sudo password "sudo passwd root" before adding the line 'Defaults targetpw' as the password will be unknown..
+sudo vim /etc/sudoers
+Defaults env_keep+="http_proxy https_proxy ftp_proxy" # nothing else
+# whole file is the rest:
+Defaults        env_reset
+Defaults env_keep="http_proxy https_proxy ftp_proxy"
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+Defaults targetpw
+
+# Host alias specification
+
+# User alias specification
+
+# Cmnd alias specification
+
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+
+# Members of the admin group may gain root privileges
+%admin ALL=(ALL) ALL
+
+# Allow members of group sudo to execute any command
+%sudo   ALL=(ALL:ALL) ALL
+
+# See sudoers(5) for more information on "#include" directives:
+
+#includedir /etc/sudoers.d
+
+// Updating:
+sudo apt update        # Fetches the list of available updates
+sudo apt upgrade       # Installs some updates; does not remove packages
+sudo apt full-upgrade  # Installs updates; may also remove some packages, if needed
+sudo apt autoremove    # Removes any old packages that are no longer needed
+man apt
+# remove sources:
+sudo rm /etc/apt/sources.list.d/cuda*
+
+// reset sudo password:
+reboot
+keep pressing shift
+choose 'recovery mode'
+choose 'root' from the list
+passwd root
+reboot
+https://linuxhint.com/boot-ubuntu-into-recovery-mode/
+
+// to prevent accessing recovery mode:
+sudo vim /etc/default/grub
+# uncomment:
+GRUB_DISABLE_RECOVERY="true"
+sudo update-grub
+https://askubuntu.com/a/186794
+
+// change pc name:
+sudo vim /etc/hostname
+
+// remove password of a user:
+sudo passwd -d userName
+sudo passwd -d myuser
+
+// package management/installing:
+apt-cache search 'xyxyxyx' # search apt-get:
+dpkg --list # list installed packages:
+
+** # 1. PPAs:
+apt-cache policy <program_name> # check available version
+sudo add-apt-repository ppa:yg-jensge/shotwell # add a ppa
+sudo apt-get update # update local directory before install
+sudo apt-get install shotwell # install
+sudo apt-get remove <package-name> # remove package
+sudo apt-get --purge remove gimp # remove with config files
+sudo apt-get purge <package-name> # remove with config files
+sudo apt-get autoremove # remove unused packages
+sudo apt-get purge --auto-remove gimp # remove package with its dependencies
+sudo apt-get clean # remove downloaded archive files to save space
+
+** # 2. deb packages (after being downloaded):
+dpkg -i python3-pypeg2_*_all.deb
+dpkg -i qutebrowser_*_all.deb
+
+sudo apt-get build-dep rhythmbox # install all build dependencies of a program
+
+// change boot order:
+sudo efibootmgr
+sudo efibootmgr -o 82,0
+
+// Disk management:
+#list disks/partitions:
+sudo lsblk
+#list disks:
+sudo fdisk -l
+#install hfs utilities (mac):
+sudo apt-get install hfsprogs
+
+// show available updates
+sudo apt-get -u upgrade
+
+// installing packages:
+#see firefox to install an app in /opt/
+#see qutebrowser:
+dpkg -i qutebrowser_*_all.deb
+
+// partitioning:
+gparted
+
+// gui:
+# switch between windows of same application:
+alt + grave (similar to ')
+
+// hypernation:
+sudo pm-hibernate
+http://askubuntu.com/questions/361734/hibernation-is-still-missing-from-menu-in-13-10-after-enabling-via-polkit-how-t/362499#362499
+https://help.ubuntu.com/stable/ubuntu-help/power-hibernate.html
