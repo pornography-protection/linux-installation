@@ -67,7 +67,7 @@ https://aur.archlinux.org/packages/fclones-bin/
 teamviewer
 https://aur.archlinux.org/teamviewer.git
 
-clipit (simplest clipboard manager, does not use zeitgest) install it from https://github.com/Writing-Tools/ClipIt-clipboard # others include: diodon clipboard manager (copy and paste). Clipman is the XFCE clipboard manager. diodon is still maintained (10+ years) but more complicated, has history, uses zeitgest, you need to run `rm -rf /home/elias/.local/share/zeitgeist/` everytime you restart/shutdown pc. For more, see:
+clipit (simplest clipboard manager, does not use zeitgest) install it from https://github.com/Writing-Tools/ClipIt-clipboard # others include: diodon clipboard manager (copy and paste). Clipman is the XFCE clipboard manager. diodon is still maintained (10+ years) but more complicated, has history, uses zeitgest to store clipboard items on disk (possible to store in memory instead, see https://github.com/diodon-dev/diodon?tab=readme-ov-file#store-clipoard-items-in-memory ), you need to run `rm -rf /home/elias/.local/share/zeitgeist/` everytime you restart/shutdown pc. For more, see:
 https://wiki.archlinux.org/index.php/clipboard#Managers 
 
 subtitlecomposer # remove 'pocketsphinx' from PKGBUILD
