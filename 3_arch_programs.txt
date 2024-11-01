@@ -54,10 +54,9 @@ https://aur.archlinux.org/xfce-theme-greybird.git
 android studio
 https://aur.archlinux.org/packages/android-studio
 
-fslint
-https://aur.archlinux.org/fslint.git
-# alternative with active development: (allow [crates.io] domain & sudo -E pacman -S cargo)
-czkawka
+czkawka (a reimplementation of fslint https://www.pixelbeat.org/fslint/)
+https://github.com/qarmin/czkawka/tags (download AppImage file)
+# or:
 https://aur.archlinux.org/czkawka.git
 # other ones:
 https://aur.archlinux.org/packages/dupeguru/
