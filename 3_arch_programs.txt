@@ -52,7 +52,7 @@ xfce-theme-greybird # or manually put in ~/.themes:
 https://aur.archlinux.org/xfce-theme-greybird.git
 
 android studio
-https://aur.archlinux.org/packages/android-studio
+Download from https://developer.android.com/studio and extract to `~/android-studio/`
 
 czkawka (a reimplementation of fslint https://www.pixelbeat.org/fslint/)
 https://github.com/qarmin/czkawka/tags (download AppImage file)
