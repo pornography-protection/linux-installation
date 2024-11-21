@@ -180,3 +180,12 @@ alt + grave (similar to ')
 sudo pm-hibernate
 http://askubuntu.com/questions/361734/hibernation-is-still-missing-from-menu-in-13-10-after-enabling-via-polkit-how-t/362499#362499
 https://help.ubuntu.com/stable/ubuntu-help/power-hibernate.html
+
+// Remove a PPA from the source list:
+ls /etc/apt/sources.list.d
+vim /etc/apt/sources.list
+ls /usr/share/keyrings/
+/var
+sudo apt-get clean
+sudo apt-get autoclean
+sudo apt-get autoremove
