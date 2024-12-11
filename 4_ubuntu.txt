@@ -1,5 +1,5 @@
 // Install apps:
-sudo apt install zip oathtool redshift pdfarranger vlc build-essential cmake unzip pkg-config ca-certificates keepassxc iptables-persistent feh vim catfish rofi gimp inkscape okular autotools-dev automake make git git-lfs gitk git-gui audacious shutter simplescreenrecorder nemo dolphin kde-cli-tools gnome-terminal ark texstudio xournalpp xournal kde-plasma-desktop xclip yt-dlp curl kate calibre htop adb colordiff xserver-xorg-input-synaptics xbacklight picom easytag kid3
+sudo apt install zip oathtool redshift pdfarranger vlc build-essential cmake unzip pkg-config ca-certificates keepassxc iptables-persistent feh vim catfish rofi gimp inkscape okular autotools-dev automake make git git-lfs gitk git-gui audacious shutter simplescreenrecorder nemo dolphin kde-cli-tools gnome-terminal ark texstudio xournalpp xournal kde-plasma-desktop xclip yt-dlp curl kate calibre htop adb colordiff xserver-xorg-input-synaptics xbacklight picom easytag kid3 gparted qutebrowser
 
 sudo apt install greybird-gtk-theme elementary-xfce-icon-theme
 
@@ -9,36 +9,41 @@ https://github.com/qarmin/czkawka/releases/
 # clipboard manager install from:
 https://github.com/Writing-Tools/ClipIt-clipboard
 
-# Open source:
-gnote (notes)
+# chromium: (.AppImage put in ~/.local/bin/)
+https://ungoogled-software.github.io/ungoogled-chromium-binaries/releases/appimage/64bit/
+
+# firefox ESR (put in ~/.local/bin/)
+https://www.mozilla.org/en-GB/firefox/all/#product-desktop-esr
+
+# yt-dlp (youtube-dl replacement)
+https://github.com/yt-dlp/yt-dlp/releases
+sudo cp yt-dlp_linux /usr/bin/yt-dlp
+
+# gnote (open source notes):
+gnote
 
 # Then manually install awesome (awesomewm) + e2guardian + dnsmasq
 sudo apt install dnsmasq # awesome
 
-// 1. Remove extra workspaces:
+# install microsoft fonts:
+sudo apt-get install ubuntu-restricted-extras ttf-mscorefonts-installer
+
+# Remove snapd: [/snap; /var/snap]
+sudo apt remove --purge snapd
+
+// Gnome shell:
+# 1. Remove extra workspaces:
 Ubuntu settings > Multitasking > workspaces
-// 2. Enable night light:
+
+# 2. Enable night light:
 Settings > Screen display > Night Light tab
-// 3. Install dash to panel:
+
+# 3. Install dash to panel:
 sudo apt install gnome-shell-extension-manager chrome-gnome-shell
 https://extensions.gnome.org/extension/1160/dash-to-panel/
-// 4. install microsoft fonts:
-sudo apt-get install ubuntu-restricted-extras ttf-mscorefonts-installer
-// 5. Remove snapd: [/snap; /var/snap]
-sudo apt remove --purge snapd
 
 // right click/right-click shortcut:
 Shift + F10
-
-# Update yt-dlp:
-python3 -m pip install -U yt-dlp # youtube-dl replacement
-
-// AppImages:
-chromium: (.AppImage put in ~/.local/bin/)
-https://ungoogled-software.github.io/ungoogled-chromium-binaries/releases/appimage/64bit/
-
-firefox ESR (put in ~/.local/bin/)
-https://www.mozilla.org/en-GB/firefox/all/#product-desktop-esr
 
 // run sudo at startup: Change brightness of screen: 
 sudo vim /etc/rc.local
@@ -97,14 +102,33 @@ root    ALL=(ALL:ALL) ALL
 
 #includedir /etc/sudoers.d
 
-// Updating:
+// apt-get:
 sudo apt update        # Fetches the list of available updates
 sudo apt upgrade       # Installs some updates; does not remove packages
 sudo apt full-upgrade  # Installs updates; may also remove some packages, if needed
 sudo apt autoremove    # Removes any old packages that are no longer needed
 man apt
+sudo apt --purge remove gimp # remove with config files
+sudo apt purge --auto-remove gimp # remove package with its dependencies
+sudo apt clean # remove downloaded archive files to save space
+sudo apt-get build-dep rhythmbox # install all build dependencies of a program
 # remove sources:
 sudo rm /etc/apt/sources.list.d/cuda*
+
+// package management/installing:
+apt-cache search 'xyxyxyx' # search apt-get:
+dpkg --list # list installed packages:
+dpkg -i python3-pypeg2_*_all.deb
+dpkg -i qutebrowser_*_all.deb
+
+// Remove a PPA from the source list:
+ls /etc/apt/sources.list.d
+vim /etc/apt/sources.list
+ls /usr/share/keyrings/
+/var
+sudo apt-get clean
+sudo apt-get autoclean
+sudo apt-get autoremove
 
 // reset sudo password:
 reboot
@@ -129,28 +153,6 @@ sudo vim /etc/hostname
 sudo passwd -d userName
 sudo passwd -d myuser
 
-// package management/installing:
-apt-cache search 'xyxyxyx' # search apt-get:
-dpkg --list # list installed packages:
-
-** # 1. PPAs:
-apt-cache policy <program_name> # check available version
-sudo add-apt-repository ppa:yg-jensge/shotwell # add a ppa
-sudo apt-get update # update local directory before install
-sudo apt-get install shotwell # install
-sudo apt-get remove <package-name> # remove package
-sudo apt-get --purge remove gimp # remove with config files
-sudo apt-get purge <package-name> # remove with config files
-sudo apt-get autoremove # remove unused packages
-sudo apt-get purge --auto-remove gimp # remove package with its dependencies
-sudo apt-get clean # remove downloaded archive files to save space
-
-** # 2. deb packages (after being downloaded):
-dpkg -i python3-pypeg2_*_all.deb
-dpkg -i qutebrowser_*_all.deb
-
-sudo apt-get build-dep rhythmbox # install all build dependencies of a program
-
 // change boot order:
 sudo efibootmgr
 sudo efibootmgr -o 82,0
@@ -163,17 +165,6 @@ sudo fdisk -l
 #install hfs utilities (mac):
 sudo apt-get install hfsprogs
 
-// show available updates
-sudo apt-get -u upgrade
-
-// installing packages:
-#see firefox to install an app in /opt/
-#see qutebrowser:
-dpkg -i qutebrowser_*_all.deb
-
-// partitioning:
-gparted
-
 // gui:
 # switch between windows of same application:
 alt + grave (similar to ')
@@ -182,12 +173,3 @@ alt + grave (similar to ')
 sudo pm-hibernate
 http://askubuntu.com/questions/361734/hibernation-is-still-missing-from-menu-in-13-10-after-enabling-via-polkit-how-t/362499#362499
 https://help.ubuntu.com/stable/ubuntu-help/power-hibernate.html
-
-// Remove a PPA from the source list:
-ls /etc/apt/sources.list.d
-vim /etc/apt/sources.list
-ls /usr/share/keyrings/
-/var
-sudo apt-get clean
-sudo apt-get autoclean
-sudo apt-get autoremove
