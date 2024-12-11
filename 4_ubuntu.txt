@@ -31,6 +31,10 @@ sudo apt-get install ubuntu-restricted-extras ttf-mscorefonts-installer
 # Remove snapd: [/snap; /var/snap]
 sudo apt remove --purge snapd
 
+// Install another language:
+sudo gnome-language-selector
+right click EN icon in system tray > preferences > Input method > Add > Arabic > Arabic ACERTY Eastern numerals
+
 // Gnome shell:
 # 1. Remove extra workspaces:
 Ubuntu settings > Multitasking > workspaces
