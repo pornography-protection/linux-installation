@@ -3,7 +3,7 @@ sudo apt install zip oathtool redshift pdfarranger vlc build-essential cmake unz
 
 sudo apt install greybird-gtk-theme elementary-xfce-icon-theme
 
-# picom is outdates; install instead from: (v. 12.5 working on 24.04)
+# picom is outdated in apt; download zip and install instead from: (v. 12.5 working on 24.04)
 https://github.com/yshui/picom
 sudo apt install libconfig-dev libdbus-1-dev libegl-dev libev-dev libgl-dev libepoxy-dev libpcre2-dev libpixman-1-dev libx11-xcb-dev libxcb1-dev libxcb-composite0-dev libxcb-damage0-dev libxcb-glx0-dev libxcb-image0-dev libxcb-present-dev libxcb-randr0-dev libxcb-render0-dev libxcb-render-util0-dev libxcb-shape0-dev libxcb-util-dev libxcb-xfixes0-dev meson ninja-build uthash-dev
 meson setup --buildtype=release build
