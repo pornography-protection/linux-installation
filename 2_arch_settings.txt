@@ -52,4 +52,3 @@ Combine the two & put them in ~/.icons/breeze
 sudo systemctl start cups # Must run this first, otherwise will show error "No PPD found"
 sudo hp-setup -i
 system-config-printer
-

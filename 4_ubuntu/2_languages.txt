@@ -1,0 +1,3 @@
+// Install another language:
+sudo gnome-language-selector
+right click EN icon in system tray > preferences > Input method > Add > Arabic > Arabic ACERTY Eastern numerals
