@@ -1,6 +1,3 @@
-// Language/keyboard on ubuntu:
-If you can't use any keyboard shortcuts in awesome (because keyboard started as arabic), left click on the language icon in taskbar (saying 'EN'), and select english.
-
 // On arch:
 localectl --no-convert set-x11-keymap gb,ara pc105 ,digits grp:caps_toggle
 # The above means: use [gb,ara] languages; using [pc105] hardware keyboard, and apply [digits] on the second language (notice the ',' denoting nothing for the first language); which instructs the arabic language to use eastern numerals e.g. ١٢٣٤٥
