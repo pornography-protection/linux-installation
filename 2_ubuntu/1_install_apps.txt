@@ -26,6 +26,10 @@ https://www.mozilla.org/en-GB/firefox/all/#product-desktop-esr
 https://github.com/yt-dlp/yt-dlp/releases
 sudo cp yt-dlp_linux /usr/bin/yt-dlp
 
+# veracrypt
+https://www.veracrypt.fr/en/Downloads.html
+https://github.com/veracrypt/VeraCrypt/tags
+
 # Then manually install awesome + e2guardian + dnsmasq
 sudo apt install dnsmasq # awesome
 
